@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 'use strict';
 
 let attemptsEl = document.getElementById('attempts');
@@ -63,6 +64,7 @@ function renderRandomImg(){
 renderRandomImg();
 
 
+
 leftImgEl.addEventListener('click', handelClicks);
 midImgEl.addEventListener('click', handelClicks);
 rightImgEl.addEventListener('click', handelClicks);
@@ -82,10 +84,14 @@ function handelClicks(event){
     renderRandomImg();
 
     //   console.log(clickedImg);
-    console.log(mall);
+    // console.log(mall);
+
   } else {
 
-    let ulEl = document.getElementById('results');
+    
+    let ulEl=document.getElementById('list');
+    
+
     for (let i=0; i<mall.length; i++){
       let liEl = document.createElement('li');
       liEl.textContent = `${mall[i].iName} has ${mall[i].votes} votes and ${mall[i].views} views.`;
@@ -96,10 +102,13 @@ function handelClicks(event){
     midImgEl.removeEventListener('click', handelClicks);
     rightImgEl.removeEventListener('click', handelClicks);
   }
+
 }
 
 
+let buttonEl=document.getElementById('results');
+buttonEl.addEventListener('click', chartRender);
+function chartRender(){
 
-
-
-
+  
+}
