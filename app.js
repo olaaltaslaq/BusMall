@@ -1,4 +1,3 @@
-/* eslint-disable no-trailing-spaces */
 'use strict';
 
 let attemptsEl = document.getElementById('attempts');
@@ -36,16 +35,14 @@ function randomIndex(){
 let leftIndex;
 let midIndex;
 let rightIndex;
+let viewImage = [];
 function renderRandomImg(){
+  do {
+    leftIndex = randomIndex(0, busimgs.length -1);
+    midIndex = randomIndex(0, busimgs.length -1);
+    rightIndex = randomIndex(0, busimgs.length -1);
 
-  leftIndex = randomIndex();
-  midIndex = randomIndex();
-  rightIndex = randomIndex();
-
-  while (leftIndex === midIndex || leftIndex === rightIndex || midIndex === rightIndex){
-    leftIndex = randomIndex();
-    midIndex = randomIndex();
-  }
+  } while (leftIndex === midIndex || leftIndex === rightIndex || midIndex === rightIndex || viewImage.includes(leftIndex) || viewImage.includes(midIndex) || viewImage.includes(rightIndex));
 
   leftImgEl.setAttribute('src', mall[leftIndex].img);
   midImgEl.setAttribute('src', mall[midIndex].img);
@@ -63,10 +60,12 @@ function renderRandomImg(){
   mall[midIndex].views++;
   mall[rightIndex].views++;
 
+  viewImage = [];
+  viewImage.push(leftIndex, midIndex, rightIndex);
+
 }
 // console.log(mall);
 renderRandomImg();
-
 
 
 leftImgEl.addEventListener('click', handelClicks);
@@ -93,7 +92,6 @@ function handelClicks(event){
   } else {
 
     let ulEl=document.getElementById('list');
-  
     for (let i=0; i<mall.length; i++){
       let liEl = document.createElement('li');
       liEl.textContent = `${mall[i].iName} has ${mall[i].votes} votes and ${mall[i].views} views.`;
