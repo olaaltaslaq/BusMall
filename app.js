@@ -164,7 +164,7 @@ function readFromLocalStorage() {
   // console.log(normalObj);
   if(normalObj !== null) {
     mall = normalObj;
-    handelClicks();
+    // handelClicks();
   }
   // console.log(mall);
 }
