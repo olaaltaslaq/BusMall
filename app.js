@@ -85,7 +85,6 @@ function handelClicks(event){
       mall[rightIndex].votes++;
     }
     renderRandomImg();
-
     //   console.log(clickedImg);
     // console.log(mall);
 
@@ -105,7 +104,7 @@ function handelClicks(event){
     rightImgEl.removeEventListener('click', handelClicks);
     chartRender();
   }
-
+  saveToLocalStorage();
 }
 
 
@@ -150,3 +149,24 @@ function chartRender(){
     }
   });
 }
+
+
+
+function saveToLocalStorage() {
+  let data = JSON.stringify(mall);
+  localStorage.setItem('bus', data);
+}
+
+function readFromLocalStorage() {
+  let stringObj = localStorage.getItem('bus');
+  // console.log(stringObj);
+  let normalObj = JSON.parse(stringObj);
+  // console.log(normalObj);
+  if(normalObj !== null) {
+    mall = normalObj;
+    // handelClicks();
+  }
+  // console.log(mall);
+}
+readFromLocalStorage();
+
